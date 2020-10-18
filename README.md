@@ -1,6 +1,9 @@
 ansible-role-openwrt-extroot
 ============================
 
+[![Ansible Role: bit_kitchen.openwrt_extroot](https://img.shields.io/ansible/role/51332.svg)](https://galaxy.ansible.com/bit_kitchen/openwrt_extroot)
+[![Build Status: bit-kitchen/ansible-role-openwrt-extroot](https://travis-ci.org/bit-kitchen/ansible-role-openwrt-extroot.svg?branch=master)](https://travis-ci.org/bit-kitchen/ansible-role-openwrt-extroot)
+
 ```sh
 ansible-galaxy install bit_kitchen.openwrt_extroot
 ```
