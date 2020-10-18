@@ -1,0 +1,18 @@
+galaxy_info:
+  author: bit_kitchen
+  role_name: openwrt_extroot
+
+  description: Configure OpenWrt to use a storage device for external root
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  galaxy_tags:
+  - openwrt
+  - extroot
+  - overlay
+
+dependencies:
+- role: gekmihesg.openwrt
+  openwrt_install_recommended_packages: no
+- role: bit_kitchen.openwrt_storage

@@ -1,0 +1,12 @@
+---
+# https://openwrt.org/docs/guide-user/additional-software/extroot_configuration
+- name: Get original root overlay device
+  shell: sed -n -e "/\s\/overlay\s.*$/s///p" /etc/mtab
+  register: _original_overlay_device
+  changed_when: no
+
+- name: Include tasks for extroot configuration
+  include_tasks: main2.yml
+  when:
+  - overlay_device is defined
+  - overlay_device != _original_overlay_device.stdout

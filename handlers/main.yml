@@ -1,0 +1,8 @@
+---
+- name: uci commit
+  uci:
+    command: commit
+
+- name: reboot
+  command: reboot
+  when: auto_reboot

@@ -1,0 +1,32 @@
+---
+- name: Setup mount for original root overlay device
+  uci:
+    command: section
+    config: fstab
+    type: mount
+    name: rwm
+    value:
+      device: "{{ _original_overlay_device.stdout }}"
+      target: /rwm
+  notify: uci commit
+
+- name: Get UUID of new root overlay device
+  shell: block info "{{ overlay_device }}" | grep -o -e "UUID=\S*" | cut -d\" -f2
+  register: _new_overlay_device_uuid
+  changed_when: no
+
+- name: Setup mount for new root overlay device
+  uci:
+    command: section
+    config: fstab
+    type: mount
+    name: overlay
+    value:
+      uuid: "{{ _new_overlay_device_uuid.stdout }}"
+      target: /overlay
+  notify: uci commit
+
+- name: Reboot
+  debug:
+    msg: "{{ 'OpenWrt will reboot automatically now.' if auto_reboot else 'Reboot manually for extroot to take effect.' }}"
+  notify: reboot
