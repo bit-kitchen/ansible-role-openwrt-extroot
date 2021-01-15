@@ -8,6 +8,7 @@
     value:
       device: "{{ _original_overlay_device.stdout }}"
       target: /rwm
+      enabled: "1"
   notify: uci commit
 
 - name: Get UUID of new root overlay device
@@ -24,6 +25,7 @@
     value:
       uuid: "{{ _new_overlay_device_uuid.stdout }}"
       target: /overlay
+      enabled: "1"
   notify: uci commit
 
 - name: Reboot
